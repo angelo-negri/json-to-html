@@ -26,6 +26,11 @@ server.get("/:id", async (req, res) => {
       <html>
       <head>
         <title>JSON to React SSR</title>
+        <style>
+          body {
+            margin: 0;
+          }
+        </style>
         <script>window.__INITIAL_DATA__ = ${JSON.stringify(data).replace(
           /</g,
           "\\u003c"
