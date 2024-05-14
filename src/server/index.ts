@@ -7,7 +7,7 @@ import { JsonResponse } from "../client/types";
 require("dotenv").config();
 const server = express();
 
-server.use("/static", express.static("dist/static"));
+server.use("/static", express.static("public/static"));
 
 server.get("/:id", async (req, res) => {
   const { id } = req.params;
