@@ -1,7 +1,7 @@
 {
   "include": ["src/client"],
   "compilerOptions": {
-    "module": "es6",
+    "module": "NodeNext",
     "target": "es5",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
