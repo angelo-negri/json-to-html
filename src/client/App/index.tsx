@@ -1,3 +1,13 @@
 import React from "react";
 
-export const App: React.FC = () => <p>Hello from Client</p>;
+const App: React.FC = () => (
+  <button
+    onClick={() => {
+      console.log("click");
+    }}
+  >
+    Hello from Client
+  </button>
+);
+
+export default App;
