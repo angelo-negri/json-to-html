@@ -2,7 +2,7 @@ import React from "react";
 import express from "express";
 import ReactDOMServer from "react-dom/server";
 import App from "../client/App";
-import { JsonDesignSet } from "../client/types";
+import { JsonResponse } from "../client/types";
 
 require("dotenv").config();
 const server = express();
@@ -14,15 +14,22 @@ server.get("/:id", async (req, res) => {
   try {
     const apiUrl = `${process.env.API_URL}/${id}/json`;
     const response = await fetch(apiUrl);
-    const data: JsonDesignSet = await response.json();
+    const data: JsonResponse = await response.json();
 
-    const app = ReactDOMServer.renderToString(React.createElement(App));
+    const app = ReactDOMServer.renderToString(
+      React.createElement(App, { data })
+    );
 
+    // We are serializing and setting data to window object's__INITIAL_DATA__ & escaped the `<` character to prevent XSS attacks
     const html = `
       <!DOCTYPE html>
       <html>
       <head>
         <title>JSON to React SSR</title>
+        <script>window.__INITIAL_DATA__ = ${JSON.stringify(data).replace(
+          /</g,
+          "\\u003c"
+        )}</script>
       </head>
       <body>
         <div id="root">${app}</div>
