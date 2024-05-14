@@ -4,6 +4,7 @@ import {
   JsonDesignBackground,
   JsonDesignProperties,
 } from "../../types";
+import { Properties } from "csstype";
 
 interface BannerProps {
   properties: JsonDesignProperties;
@@ -28,6 +29,7 @@ const Banner: React.FC<BannerProps> = ({ properties, children }) => {
     backgroundColor: backgroundColor
       ? backgroundStyle(backgroundColor)
       : "transparent",
+    position: "relative" as Properties["position"],
   };
 
   return <div style={styles}>{children}</div>;
