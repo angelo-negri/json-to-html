@@ -1352,3 +1352,9 @@ export enum TextDecorationEnum {
   UNDERLINE = "underline",
   STRIKETHROUGH = "line-through",
 }
+
+export type JsonResponse = {
+  hash: string;
+  userId?: number;
+  banner: JsonDesign;
+};
