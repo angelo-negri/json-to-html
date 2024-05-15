@@ -54,6 +54,6 @@ server.get("*", (req, res) => {
   res.status(404).send("Page not found - try adding an ID to the URL");
 });
 
-server.listen(3000, () => {
-  console.log(`Server running on http://localhost:3000`);
+server.listen(process.env.PORT || 3000, () => {
+  console.log(`Server running on http://localhost:${process.env.PORT || 3000}`);
 });
